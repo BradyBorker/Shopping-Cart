@@ -3,6 +3,7 @@ import { useParams } from "react-router-dom"
 import Navbar from "./components/Navbar"
 import Shop from "./components/Shop";
 import Home from "./components/Home";
+import "./styles/app.css"
 
 function App() {
   const { page } = useParams();
@@ -10,8 +11,7 @@ function App() {
 
   return (
     <>
-      <Navbar showCart={isShopPage} />
-
+      <Navbar />
       {isShopPage ? <Shop /> : <Home />}
     </>
   )

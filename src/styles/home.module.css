@@ -1,0 +1,24 @@
+.home {
+    width: 75%;
+    margin: 0 auto;
+}
+
+.main {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 15px;
+
+    margin-top: 25px;
+}
+
+.article {
+    padding: 10px;
+}
+
+.fontSize {
+    font-size: 18px;
+}
+
+.centerText {
+    text-align: center;
+}
