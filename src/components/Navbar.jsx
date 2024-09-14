@@ -7,7 +7,7 @@ const Navbar = () => {
             <Link to='/' className={styles.link}>Home</Link>
             <div className={styles.shopLinks}>
                 <Link to='/shop' className={styles.link}>Shop</Link>
-                <Link to='checkout' className={styles.checkoutLink}><img className={styles.svg} src="https://www.svgrepo.com/show/522664/shopping-cart.svg" alt="Shopping Cart" /></Link>
+                <Link to='/checkout' className={styles.checkoutLink}><img className={styles.svg} src="https://www.svgrepo.com/show/522664/shopping-cart.svg" alt="Shopping Cart" /></Link>
             </div>
         </div>
     )

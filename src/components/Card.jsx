@@ -1,7 +1,10 @@
-import { useState } from "react"
+import { useState, useContext } from "react"
+import { CartContext } from "../App";
 import styles from "../styles/card.module.css"
 
 const Card = ({ product }) => {
+    const [counter, setCounter] = useState(0);
+    const setCart = useContext(CartContext)
     // id, title, price, category, description, image
 
     return (
@@ -9,14 +12,14 @@ const Card = ({ product }) => {
             <img className={styles.image} src={product.image} alt={product.description} />
             <div className={styles.title}>{product.title}</div>
             <div className={styles.price}>{`$${product.price}`}</div>
-            <div className={styles.addToCart}>
+            <form className={styles.addToCart}>
                 <div className={styles.counter}>
                     <div>-</div>
-                    <input type="number" />
+                    <input type="number" value={counter} />
                     <div>+</div>
                 </div>
-                <button>Add to Cart</button>
-            </div>
+                <button className={styles.button} type="submit">Add to Cart</button>
+            </form>
         </div>
     )
 }
