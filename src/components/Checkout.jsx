@@ -1,4 +1,4 @@
-const Checkout = () => {
+const Checkout = ({ cart, setCart }) => {
     return (
         <>
         </>

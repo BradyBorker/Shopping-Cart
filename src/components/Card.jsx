@@ -7,16 +7,45 @@ const Card = ({ product }) => {
     const setCart = useContext(CartContext)
     // id, title, price, category, description, image
 
+    const updateQuantity = (e) => {
+        if (e.target.value.length > 1 && e.target.value[0] === 0) {
+            return setCounter(e.target.value.substring(1))
+        }
+
+        (e.target.value <= 0) ? setCounter(0) : setCounter(e.target.value)
+    }
+
+    const addToCart = (e) => {
+        e.preventDefault();
+        setCounter(0);
+
+        if (Number(counter) !== 0)
+            setCart((cart) => {
+                if (cart[product.id] === undefined) {
+                    return {
+                        ...cart, [`${product.id}`]: {
+                            product,
+                            count: Number(counter)
+                        }
+                    }
+                };
+                return {
+                    ...cart, [`${[product.id]}`]: {
+                        product,
+                        count: Number(counter) + cart[product.id].count
+                    }
+                };
+            })
+    }
+
     return (
         <div className={styles.card}>
             <img className={styles.image} src={product.image} alt={product.description} />
             <div className={styles.title}>{product.title}</div>
             <div className={styles.price}>{`$${product.price}`}</div>
-            <form className={styles.addToCart}>
+            <form className={styles.addToCart} onSubmit={(e) => addToCart(e)}>
                 <div className={styles.counter}>
-                    <div>-</div>
-                    <input type="number" value={counter} />
-                    <div>+</div>
+                    <input type="number" value={counter} onChange={(e) => updateQuantity(e)} />
                 </div>
                 <button className={styles.button} type="submit">Add to Cart</button>
             </form>

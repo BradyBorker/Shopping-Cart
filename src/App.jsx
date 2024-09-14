@@ -20,7 +20,7 @@ function App() {
         <CartContext.Provider value={setCart}>
           <Shop />
         </CartContext.Provider>}
-      {page === 'checkout' && <Checkout cart={cart} />}
+      {page === 'checkout' && <Checkout cart={cart} setCart={setCart} />}
     </>
   )
 }
