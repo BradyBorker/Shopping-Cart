@@ -1,14 +1,15 @@
 import { useEffect, useState } from "react";
 import Card from "./Card";
+import styles from "../styles/shop.module.css"
 
 const Shop = () => {
     const [products, setProducts] = useState(() => JSON.parse(localStorage.getItem('products') ?? '[]'));
 
     useEffect(() => {
         const getItems = async () => {
-            const fetchedProducts = await (await fetch('https://fakestoreapi.com/products?limit=15')).json()
+            const fetchedProducts = await (await fetch('https://fakestoreapi.com/products?limit=5')).json()
 
-            localStorage.setItem(fetchedProducts);
+            localStorage.setItem('products', JSON.stringify(fetchedProducts));
             setProducts(fetchedProducts);
         }
 
@@ -17,10 +18,11 @@ const Shop = () => {
 
     return (
         <>
-            <h1>Shop Page</h1>
-            {products.map((product) => (
-                <Card key={product.id} product={product} />
-            ))}
+            <main className={styles.grid}>
+                {products.map((product) => (
+                    <Card key={product.id} product={product} />
+                ))}
+            </main>
         </>
     )
 }
