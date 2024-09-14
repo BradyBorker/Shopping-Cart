@@ -1,8 +1,8 @@
+import PropTypes from 'prop-types';
 import styles from "../styles/checkout.module.css"
 import genStyles from "../styles/general.module.css"
 
 const Checkout = ({ cart, setCart }) => {
-    // id, title, price, category, description, image
     const cartObjs = Object.keys(cart).map((key) => (
         cart[key]
     ))
@@ -28,7 +28,7 @@ const Checkout = ({ cart, setCart }) => {
             total += parseFloat(obj.product.price) * Number(obj.count)
         })
 
-        return total;
+        return total.toFixed(2);
     }
 
     return (
@@ -45,11 +45,16 @@ const Checkout = ({ cart, setCart }) => {
                     </section>
                 ))}
                 <section className={styles.total}>
-                    {cartObjs.length === 0 ? 'Cart is Empty!' : `Total Cost: ${getTotalCost().toFixed(2)}`}
+                    {cartObjs.length === 0 ? 'Cart is Empty!' : `Total Cost: $${getTotalCost()}`}
                 </section>
             </main>
         </>
     )
 };
+
+Checkout.propTypes = {
+    cart: PropTypes.object,
+    setCart: PropTypes.func,
+}
 
 export default Checkout;

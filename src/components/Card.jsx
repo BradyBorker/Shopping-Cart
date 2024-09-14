@@ -1,11 +1,11 @@
 import { useState, useContext } from "react"
 import { CartContext } from "../App";
+import PropTypes from 'prop-types';
 import styles from "../styles/card.module.css"
 
 const Card = ({ product }) => {
     const [counter, setCounter] = useState(0);
     const setCart = useContext(CartContext)
-    // id, title, price, category, description, image
 
     const updateQuantity = (e) => {
         if (e.target.value.length > 1 && e.target.value[0] === 0) {
@@ -18,7 +18,6 @@ const Card = ({ product }) => {
     const addToCart = (e) => {
         e.preventDefault();
         setCounter(0);
-        const input = e.target['0']
 
         if (Number(counter) !== 0) {
             setCart((cart) => {
@@ -38,6 +37,7 @@ const Card = ({ product }) => {
                 };
             })
 
+            const input = e.target['0']
             input.classList.toggle(styles.goodSubmit);
             setTimeout(() => {
                 input.classList.toggle(styles.goodSubmit);
@@ -58,6 +58,10 @@ const Card = ({ product }) => {
             </form>
         </div>
     )
+}
+
+Card.propTypes = {
+    product: PropTypes.object.isRequired,
 }
 
 export default Card
