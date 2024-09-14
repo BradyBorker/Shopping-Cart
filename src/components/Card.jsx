@@ -18,8 +18,9 @@ const Card = ({ product }) => {
     const addToCart = (e) => {
         e.preventDefault();
         setCounter(0);
+        const input = e.target['0']
 
-        if (Number(counter) !== 0)
+        if (Number(counter) !== 0) {
             setCart((cart) => {
                 if (cart[product.id] === undefined) {
                     return {
@@ -36,6 +37,12 @@ const Card = ({ product }) => {
                     }
                 };
             })
+
+            input.classList.toggle(styles.goodSubmit);
+            setTimeout(() => {
+                input.classList.toggle(styles.goodSubmit);
+            }, 1000)
+        }
     }
 
     return (
