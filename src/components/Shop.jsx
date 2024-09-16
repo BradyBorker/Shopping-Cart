@@ -18,7 +18,7 @@ const Shop = () => {
 
     return (
         <>
-            <main className={styles.grid}>
+            <main className={styles.grid} alt='products'>
                 {products.map((product) => (
                     <Card key={product.id} product={product} />
                 ))}

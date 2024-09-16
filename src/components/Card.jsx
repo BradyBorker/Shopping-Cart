@@ -8,7 +8,8 @@ const Card = ({ product }) => {
     const setCart = useContext(CartContext)
 
     const updateQuantity = (e) => {
-        if (e.target.value.length > 1 && e.target.value[0] === 0) {
+        if (e.target.value.length > 1 && e.target.value[0] === '0') {
+            console.log('hi')
             return setCounter(e.target.value.substring(1))
         }
 
@@ -50,7 +51,7 @@ const Card = ({ product }) => {
             <img className={styles.image} src={product.image} alt={product.description} />
             <div className={styles.title}>{product.title}</div>
             <div className={styles.price}>{`$${product.price}`}</div>
-            <form className={styles.addToCart} onSubmit={(e) => addToCart(e)}>
+            <form className={styles.addToCart} onSubmit={(e) => addToCart(e)} aria-label="Add to cart">
                 <div className={styles.counter}>
                     <input type="number" value={counter} onChange={(e) => updateQuantity(e)} />
                 </div>

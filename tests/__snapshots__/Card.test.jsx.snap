@@ -1,0 +1,44 @@
+// Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
+
+exports[`Card component > renders the Card component 1`] = `
+<div>
+  <div
+    class="_card_277467"
+  >
+    <img
+      alt="product1 description"
+      class="_image_277467"
+      src=""
+    />
+    <div
+      class="_title_277467"
+    >
+      product1
+    </div>
+    <div
+      class="_price_277467"
+    >
+      $1
+    </div>
+    <form
+      aria-label="Add to cart"
+      class="_addToCart_277467"
+    >
+      <div
+        class="_counter_277467"
+      >
+        <input
+          type="number"
+          value="0"
+        />
+      </div>
+      <button
+        class="_button_277467"
+        type="submit"
+      >
+        Add to Cart
+      </button>
+    </form>
+  </div>
+</div>
+`;
